@@ -12,58 +12,62 @@ class TransactionList extends StatelessWidget {
   
   @override
   Widget build(BuildContext context) {
-    return Column(
-            children: txs.map((tx) {
-              return Card(
-                child: Row(
-                  children: [
-                    Container(
-                      decoration: BoxDecoration(
-                          border: Border.all(
-                        color: Colors.purple,
-                        width: 1.5,
-                      )),
-                      margin: EdgeInsets.all(
-                        20,
-                      ),
-                      padding: EdgeInsets.all(
-                        10,
-                      ),
-                      child: Text(
-                        tx.amount.toString(),
-                        style: TextStyle(
-                            fontWeight: FontWeight.bold,
-                            fontSize: 20,
-                            color: Colors.purple),
-                      ),
-                    ),
-                    Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Container(
-                          child: Text(
-                            tx.title,
-                            style: TextStyle(
-                                fontSize: 14,
-                                fontWeight: FontWeight.bold,
-                                color: Colors.brown),
-                          ),
+    return Container(
+      height: 500,
+      child: ListView.builder(
+              itemBuilder: (ctx, index) {
+                return Card(
+                  child: Row(
+                    children: [
+                      Container(
+                        decoration: BoxDecoration(
+                            border: Border.all(
+                          color: Colors.purple,
+                          width: 1.5,
+                        )),
+                        margin: EdgeInsets.all(
+                          20,
                         ),
-                        Text(
-                          DateFormat.yMd().format(
-                            tx.date,
-                          ),
+                        padding: EdgeInsets.all(
+                          10,
+                        ),
+                        child: Text(
+                          txs[index].amount.toString(),
                           style: TextStyle(
-                            color: Colors.grey,
-                            fontSize: 12,
-                          ),
+                              fontWeight: FontWeight.bold,
+                              fontSize: 20,
+                              color: Colors.purple),
                         ),
-                      ],
-                    )
-                  ],
-                ),
-              );
-            }).toList(),
-          );
+                      ),
+                      Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Container(
+                            child: Text(
+                              txs[index].title,
+                              style: TextStyle(
+                                  fontSize: 14,
+                                  fontWeight: FontWeight.bold,
+                                  color: Colors.brown),
+                            ),
+                          ),
+                          Text(
+                            DateFormat.yMd().format(
+                              txs[index].date,
+                            ),
+                            style: TextStyle(
+                              color: Colors.grey,
+                              fontSize: 12,
+                            ),
+                          ),
+                        ],
+                      )
+                    ],
+                  ),
+                );
+              },
+              itemCount: txs.length,
+            ),
+    );
   }
 }

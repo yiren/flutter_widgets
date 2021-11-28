@@ -41,15 +41,12 @@ class _UserTranactionState extends State<UserTranaction> {
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: 500,
-      child: SingleChildScrollView(
-        child: Column(
-          children: [
+          child: Column( // List View requires parent height to render, otherwise it is infinite height.
+          children: [    // load all children in this case. Use builder to render visible items at the first time.
             AddTransaction(_addTransaction), 
             TransactionList(_txs),
           ],
         ),
-      ),
     );
   }
 }
