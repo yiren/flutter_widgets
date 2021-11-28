@@ -40,11 +40,16 @@ class _UserTranactionState extends State<UserTranaction> {
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      children: [
-        AddTransaction(_addTransaction), 
-        TransactionList(_txs),
-      ],
+    return Container(
+      height: 500,
+      child: SingleChildScrollView(
+        child: Column(
+          children: [
+            AddTransaction(_addTransaction), 
+            TransactionList(_txs),
+          ],
+        ),
+      ),
     );
   }
 }

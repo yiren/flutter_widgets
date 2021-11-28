@@ -29,14 +29,16 @@ class MyApp extends StatelessWidget {
       appBar: AppBar(
         title: Text('Flutter Widgets'),
       ),
-      body: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: <Widget>[
-          Card(
-            child: Text('Chart'),
-          ),
-          UserTranaction(), 
-        ],
+      body: SingleChildScrollView(
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: <Widget>[
+            Card(
+              child: Text('Chart'),
+            ),
+            UserTranaction(), 
+          ],
+        ),
       ),
     );
   }
